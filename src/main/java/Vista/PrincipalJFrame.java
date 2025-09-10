@@ -4,19 +4,16 @@
  */
 package Vista;
 
+import javax.swing.*;
+
 /**
  *
  * @author Andres Valencia
  */
 public class PrincipalJFrame extends javax.swing.JFrame {
+    
     RegPacienteInternalFrame regPacienteInternalFrame;
     ConsPacienteInternalFrame consPacienteInternalFrame;
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PrincipalJFrame.class.getName());
-
-    /**
-     * Creates new form PrincipalJFrame
-     */
     public PrincipalJFrame() {
         regPacienteInternalFrame=new RegPacienteInternalFrame();
         consPacienteInternalFrame=new ConsPacienteInternalFrame();
@@ -118,20 +115,15 @@ public class PrincipalJFrame extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
+
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new PrincipalJFrame().setVisible(true));
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run(){
+                new PrincipalJFrame().setVisible(true);
+            }
+        });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
