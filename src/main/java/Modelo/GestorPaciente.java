@@ -5,30 +5,57 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class GestorPaciente {
-
     private final List<Paciente> pacientes;
 
     public GestorPaciente() {
         this.pacientes = new LinkedList<>();
     }
 
+    // Fixed method name to match the one being called
+    public void RegistrarPacientes(Paciente paciente) {
+        if (paciente != null) {
+            pacientes.add(paciente);
+            System.out.println("Paciente registrado exitosamente: " + paciente.toString());
+        } else {
+            System.out.println("Error: No se puede registrar un paciente nulo");
+        }
+    }
+
+    // Alternative method with standard naming convention
     public void registrarPaciente(Paciente paciente) {
-        pacientes.add(paciente);
+        RegistrarPacientes(paciente);
     }
 
     public List<Paciente> buscarPacientesPorParametro(Parametro parametro, String valor) {
+        if (valor == null || valor.trim().isEmpty()) {
+            return new LinkedList<>();
+        }
+
         return pacientes.stream()
                 .filter(pac -> switch (parametro) {
-                    case IDENTIFICACION -> pac.getIdentificacion().equalsIgnoreCase(valor);
-                    case NOMBRES -> pac.getNombres().equalsIgnoreCase(valor);
-                    case APELLIDOS -> pac.getApellidos().equalsIgnoreCase(valor);
-                    case GENERO -> pac.getGenero().equalsIgnoreCase(valor);
+                    case IDENTIFICACION -> pac.getIdentificacion() != null && 
+                                          pac.getIdentificacion().equalsIgnoreCase(valor.trim());
+                    case NOMBRES -> pac.getNombres() != null && 
+                                   pac.getNombres().equalsIgnoreCase(valor.trim());
+                    case APELLIDOS -> pac.getApellidos() != null && 
+                                     pac.getApellidos().equalsIgnoreCase(valor.trim());
+                    case GENERO -> pac.getGenero() != null && 
+                                  pac.getGenero().equalsIgnoreCase(valor.trim());
                 })
                 .collect(Collectors.toList());
     }
 
-    public void RegistrarPacientes(Paciente pacienteModelo) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<Paciente> obtenerTodosPacientes() {
+        return new LinkedList<>(pacientes);
+    }
+
+    public boolean eliminarPaciente(String identificacion) {
+        return pacientes.removeIf(pac -> pac.getIdentificacion() != null && 
+                                        pac.getIdentificacion().equalsIgnoreCase(identificacion));
+    }
+
+    public int getCantidadPacientes() {
+        return pacientes.size();
     }
 
     // Enum for parameters instead of magic numbers
@@ -39,43 +66,3 @@ public class GestorPaciente {
         GENERO
     }
 }
-
-
-
-/*
-package Modelo;
- import java.util.*;
- /**
- *
- * @author Usuario
- /*
- public class GestorPaciente {
-    private static LinkedList<Paciente> pacientes;
-    public GestorPaciente(){
-        pacientes=new LinkedList<Paciente>();
-    }
-    public void RegistrarPacientes(Paciente paciente){
-    pacientes.add(paciente);
-    }
- public static LinkedList<Paciente> getPacientebyParametro(int parametro, String valor)
-   {
-      LinkedList<Paciente> resultado=new LinkedList<Paciente>();
-      for(Paciente pac:pacientes)
-      {
-          switch(parametro){
-              case 1: if(pac.getIdentificacion().equals(valor))
-                      resultado.add(pac);
-                      break;
-              case 2: if(pac.getNombres().equals(valor))
-                      resultado.add(pac);
-                      break;
-              case 3: if(pac.getApellidos().equals(valor))
-                      resultado.add(pac);
-                      break;
-              case 4: if(pac.getGenero().equals(valor))
-                      resultado.add(pac);
-                      break;
-          }
-   } 
-
-*/

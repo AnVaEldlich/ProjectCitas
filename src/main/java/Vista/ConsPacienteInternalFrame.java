@@ -10,6 +10,9 @@ package Vista;
  */
 public class ConsPacienteInternalFrame extends javax.swing.JInternalFrame {
 
+    public Object btn_buscar;
+    public Object lbl_info;
+
     /**
      * Creates new form ConsPacienteInternalFrame
      */
@@ -27,35 +30,35 @@ public class ConsPacienteInternalFrame extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jLabel1 = new javax.swing.JLabel();
+        rdb_identificacion = new javax.swing.JRadioButton();
+        rdb_nombres = new javax.swing.JRadioButton();
+        rdb_apellidos = new javax.swing.JRadioButton();
+        rdb_genero = new javax.swing.JRadioButton();
+        txt_valor = new javax.swing.JLabel();
         ValorTxt = new javax.swing.JTextField();
-        AceptarBtn = new javax.swing.JButton();
+        btn_aceptar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        ResultadosTbl = new javax.swing.JTable();
+        Tbl_datos = new javax.swing.JTable();
 
-        jRadioButton1.setText("Identificacion");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        rdb_identificacion.setText("Identificacion");
+        rdb_identificacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                rdb_identificacionActionPerformed(evt);
             }
         });
 
-        jRadioButton2.setText("Nombre");
+        rdb_nombres.setText("Nombre");
 
-        jRadioButton3.setText("Apellidos");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+        rdb_apellidos.setText("Apellidos");
+        rdb_apellidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
+                rdb_apellidosActionPerformed(evt);
             }
         });
 
-        jRadioButton4.setText("Sexo");
+        rdb_genero.setText("Sexo");
 
-        jLabel1.setText("Valor a buscar:");
+        txt_valor.setText("Valor a buscar:");
 
         ValorTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,14 +66,14 @@ public class ConsPacienteInternalFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        AceptarBtn.setText("Aceptar");
-        AceptarBtn.addActionListener(new java.awt.event.ActionListener() {
+        btn_aceptar.setText("Aceptar");
+        btn_aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AceptarBtnActionPerformed(evt);
+                btn_aceptarActionPerformed(evt);
             }
         });
 
-        ResultadosTbl.setModel(new javax.swing.table.DefaultTableModel(
+        Tbl_datos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -81,7 +84,7 @@ public class ConsPacienteInternalFrame extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(ResultadosTbl);
+        jScrollPane1.setViewportView(Tbl_datos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,21 +96,21 @@ public class ConsPacienteInternalFrame extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txt_valor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(rdb_identificacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(jRadioButton2)
+                                .addComponent(rdb_nombres)
                                 .addGap(18, 18, 18)
-                                .addComponent(jRadioButton3)
+                                .addComponent(rdb_apellidos)
                                 .addGap(18, 18, 18)
-                                .addComponent(jRadioButton4))
+                                .addComponent(rdb_genero))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
                                 .addComponent(ValorTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(AceptarBtn)))))
+                                .addComponent(btn_aceptar)))))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -115,15 +118,15 @@ public class ConsPacienteInternalFrame extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton4))
+                    .addComponent(rdb_identificacion)
+                    .addComponent(rdb_nombres)
+                    .addComponent(rdb_apellidos)
+                    .addComponent(rdb_genero))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_valor, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ValorTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AceptarBtn))
+                    .addComponent(btn_aceptar))
                 .addGap(51, 51, 51)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(16, Short.MAX_VALUE))
@@ -132,17 +135,17 @@ public class ConsPacienteInternalFrame extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void rdb_identificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdb_identificacionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_rdb_identificacionActionPerformed
 
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+    private void rdb_apellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdb_apellidosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
+    }//GEN-LAST:event_rdb_apellidosActionPerformed
 
-    private void AceptarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarBtnActionPerformed
+    private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_AceptarBtnActionPerformed
+    }//GEN-LAST:event_btn_aceptarActionPerformed
 
     private void ValorTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValorTxtActionPerformed
         // TODO add your handling code here:
@@ -150,15 +153,21 @@ public class ConsPacienteInternalFrame extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AceptarBtn;
-    private javax.swing.JTable ResultadosTbl;
+    public javax.swing.JTable Tbl_datos;
     private javax.swing.JTextField ValorTxt;
+    public javax.swing.JButton btn_aceptar;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JRadioButton rdb_apellidos;
+    public javax.swing.JRadioButton rdb_genero;
+    public javax.swing.JRadioButton rdb_identificacion;
+    public javax.swing.JRadioButton rdb_nombres;
+    public javax.swing.JLabel txt_valor;
     // End of variables declaration//GEN-END:variables
+
+    public class lbl_info {
+
+        public lbl_info() {
+        }
+    }
 }

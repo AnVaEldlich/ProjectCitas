@@ -1,13 +1,24 @@
-
 package Modelo;
 
-
 public class Paciente {
-    
     private String identificacion;
     private String nombres;
     private String apellidos;
     private String fechaNacimiento;
+    private String genero;
+
+    // Default constructor
+    public Paciente() {
+    }
+
+    // Constructor with parameters
+    public Paciente(String identificacion, String nombres, String apellidos, String fechaNacimiento, String genero) {
+        this.identificacion = identificacion;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.fechaNacimiento = fechaNacimiento;
+        this.genero = genero;
+    }
 
     /**
      * @return the identificacion
@@ -65,10 +76,28 @@ public class Paciente {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    Object getGenero() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    /**
+     * @return the genero
+     */
+    public String getGenero() {
+        return genero;
     }
-    
-    
-    
+
+    /**
+     * @param genero the genero to set
+     */
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    @Override
+    public String toString() {
+        return "Paciente{" +
+                "identificacion='" + identificacion + '\'' +
+                ", nombres='" + nombres + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", fechaNacimiento='" + fechaNacimiento + '\'' +
+                ", genero='" + genero + '\'' +
+                '}';
+    }
 }
