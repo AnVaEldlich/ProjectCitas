@@ -1,29 +1,143 @@
 package Vista;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package Vista;
-
 import Vista.ConsPacienteInternalFrame;
 import Vista.RegPacienteInternalFrame;
+import javax.swing.*;
+import java.util.logging.Logger;
 
-public class PrincipalJFrame extends javax.swing.JFrame {
+public class PrincipalJFrame extends JFrame {
+    private static final Logger logger = Logger.getLogger(PrincipalJFrame.class.getName());
 
-    RegPacienteInternalFrame regPacienteInternalFrame;
-    ConsPacienteInternalFrame consPacienteInternalFrame;
-
+    // Internal frames
+    private RegPacienteInternalFrame regPacienteInternalFrame;
+    private ConsPacienteInternalFrame consPacienteInternalFrame;
+    
+    // Menu components
+    private JMenuBar jMenuBar1;
+    private JMenu jMenu1;
+    private JMenu jMenu2;
+    private JMenuItem jMenuItem1; // Exit
+    private JMenuItem jMenuItem2; // Consultar
+    private JMenuItem jMenuItem3; // Registrar
+    
+    private JDesktopPane desktopPane;
+    
     public PrincipalJFrame() {
-        regPacienteInternalFrame = new RegPacienteInternalFrame();
-        consPacienteInternalFrame = new ConsPacienteInternalFrame();
-        add(regPacienteInternalFrame);
-        add(consPacienteInternalFrame);
         initComponents();
-        setExtendedState(MAXIMIZED_BOTH);
+        setupInternalFrames();
     }
-}
+    
+    private void initComponents() {
+        // Configuración básica del frame
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema de Gestión de Pacientes");
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
+        // Crear el desktop pane
+        desktopPane = new JDesktopPane();
+        setContentPane(desktopPane);
+        
+        // Crear la barra de menú
+        createMenuBar();
+        
+        // Inicializar internal frames
+        initializeInternalFrames();
+        
+        // Configuración final
+        pack();
+        setLocationRelativeTo(null);
+    }
+  /**
+     * Inicializa los internal frames
+     */
+    private void initializeInternalFrames() {
+        try {
+            regPacienteInternalFrame = new RegPacienteInternalFrame();
+            consPacienteInternalFrame = new ConsPacienteInternalFrame();
+            
+            // Agregar al desktop pane
+            desktopPane.add(regPacienteInternalFrame);
+            desktopPane.add(consPacienteInternalFrame);
+            
+            // Inicialmente ocultos
+            regPacienteInternalFrame.setVisible(false);
+            consPacienteInternalFrame.setVisible(false);
+            
+        } catch (Exception e) {
+            logger.severe("Error al inicializar internal frames: " + e.getMessage());
+            // Si no se pueden crear los internal frames, crear placeholders
+            createPlaceholderFrames();
+        }
+    }
+    
+       private void createPlaceholderFrames() {
+        regPacienteInternalFrame = (RegPacienteInternalFrame) new JInternalFrame("Registro de Pacientes", true, true, true, true);
+        regPacienteInternalFrame.add(new JLabel("Frame de registro - En desarrollo"));
+        regPacienteInternalFrame.setSize(600, 400);
+        regPacienteInternalFrame.setLocation(50, 50);
+        
+        consPacienteInternalFrame = (ConsPacienteInternalFrame) new JInternalFrame("Consulta de Pacientes", true, true, true, true);
+        consPacienteInternalFrame.add(new JLabel("Frame de consulta - En desarrollo"));
+        consPacienteInternalFrame.setSize(600, 400);
+        consPacienteInternalFrame.setLocation(100, 100);
+        
+        desktopPane.add(regPacienteInternalFrame);
+        desktopPane.add(consPacienteInternalFrame);
+        
+        regPacienteInternalFrame.setVisible(false);
+        consPacienteInternalFrame.setVisible(false);
+    }
+       
+       
+        
+    /**
+     * Crea la barra de menú
+     */
+    private void createMenuBar() {
+        jMenuBar1 = new JMenuBar();
+        
+        // Menú Archivo
+        jMenu1 = new JMenu("Archivo");
+        jMenuItem1 = new JMenuItem("Salir");
+        jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
+        jMenu1.add(jMenuItem1);
+        
+        // Menú Pacientes
+        jMenu2 = new JMenu("Pacientes");
+        
+        // Nota: Los elementos del menú estaban intercambiados en el código original
+        jMenuItem2 = new JMenuItem("Consultar");
+        jMenuItem3 = new JMenuItem("Registrar");
+        
+        jMenuItem2.addActionListener(this::jMenuItem2ActionPerformed);
+        jMenuItem3.addActionListener(this::jMenuItem3ActionPerformed);
+        
+        jMenu2.add(jMenuItem3); // Registrar primero
+        jMenu2.add(jMenuItem2); // Consultar segundo
+        
+        // Agregar menús a la barra
+        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMenu2);
+        
+        setJMenuBar(jMenuBar1);
+    }
 
+    
+    /**
+     * Configura las propiedades de los internal frames
+     */
+    private void setupInternalFrames() {
+        if (regPacienteInternalFrame != null) {
+            setupFrame(regPacienteInternalFrame, 600, 400, 50, 50);
+        }
+        
+        if (consPacienteInternalFrame != null) {
+            setupFrame(consPacienteInternalFrame, 600, 400, 100, 100);
+        }
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -91,7 +205,113 @@ public class PrincipalJFrame extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    private void setupFrame(JInternalFrame frame, int width, int height, int x, int y) {
+        frame.setSize(width, height);
+        frame.setLocation(x, y);
+        frame.setClosable(true);
+        frame.setMaximizable(true);
+        frame.setResizable(true);
+        frame.setIconifiable(true);
+    }
+    
+        // Event Handlers
+    
+    /**
+     * Maneja el evento de consultar pacientes
+     */
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {
+        showInternalFrame(consPacienteInternalFrame, "Frame de consulta no disponible");
+    }
+    
+    /**
+     * Maneja el evento de registrar pacientes
+     */
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {
+        showInternalFrame(regPacienteInternalFrame, "Frame de registro no disponible");
+    }
+    
+    /**
+     * Método auxiliar para mostrar internal frames
+     */
+    private void showInternalFrame(JInternalFrame frame, String errorMessage) {
+        if (frame != null) {
+            frame.setVisible(true);
+            frame.toFront();
+            try {
+                frame.setSelected(true);
+            } catch (java.beans.PropertyVetoException ex) {
+                logger.warning("No se pudo seleccionar el frame: " + ex.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    /**
+     * Maneja el evento de salir de la aplicación
+     */
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {
+        int option = JOptionPane.showConfirmDialog(
+            this,
+            "¿Está seguro que desea salir de la aplicación?",
+            "Confirmar Salida",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE
+        );
+        
+        if (option == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }
+    
+    /**
+     * Método principal
+     */
+    public static void main(String args[]) {
+        // Configurar Look and Feel
+        setLookAndFeel();
+        
+        // Crear y mostrar la ventana principal
+        SwingUtilities.invokeLater(() -> {
+            try {
+                new PrincipalJFrame().setVisible(true);
+            } catch (Exception e) {
+                logger.severe("Error al inicializar la aplicación: " + e.getMessage());
+                JOptionPane.showMessageDialog(null, 
+                    "Error al inicializar la aplicación: " + e.getMessage(),
+                    "Error Fatal", 
+                    JOptionPane.ERROR_MESSAGE);
+            }
+        });
+    }
+    
+    /**
+     * Configura el Look and Feel de la aplicación
+     */
+    private static void setLookAndFeel() {
+        try {
+            // Intentar usar el Look and Feel del sistema
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeel());
+        } catch (Exception ex) {
+            logger.warning("No se pudo establecer el Look and Feel del sistema: " + ex.getMessage());
+            
+            // Fallback a Nimbus si está disponible
+            try {
+                for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                    if ("Nimbus".equals(info.getName())) {
+                        UIManager.setLookAndFeel(info.getClassName());
+                        break;
+                    }
+                }
+            } catch (Exception e) {
+                logger.warning("No se pudo establecer Nimbus Look and Feel: " + e.getMessage());
+                // Usar el Look and Feel por defecto
+            }
+        }
+    }
+}
+ 
+    
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
         consPacienteInternalFrame.setVisible(true);
