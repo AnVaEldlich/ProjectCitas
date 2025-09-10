@@ -11,7 +11,6 @@ package Vista;
 public class ConsPacienteInternalFrame extends javax.swing.JInternalFrame {
 
     public Object btn_buscar;
-    public Object lbl_info;
 
     /**
      * Creates new form ConsPacienteInternalFrame
@@ -164,10 +163,4 @@ public class ConsPacienteInternalFrame extends javax.swing.JInternalFrame {
     public javax.swing.JRadioButton rdb_nombres;
     public javax.swing.JLabel txt_valor;
     // End of variables declaration//GEN-END:variables
-
-    public class lbl_info {
-
-        public lbl_info() {
-        }
-    }
 }

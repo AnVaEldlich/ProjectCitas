@@ -1,23 +1,28 @@
+package Vista;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Vista;
 
-/**
- *
- * @author Andres Valencia
- */
-public class PrincipalJFrame extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PrincipalJFrame.class.getName());
+import Vista.ConsPacienteInternalFrame;
+import Vista.RegPacienteInternalFrame;
 
-    /**
-     * Creates new form PrincipalJFrame
-     */
+public class PrincipalJFrame extends javax.swing.JFrame {
+
+    RegPacienteInternalFrame regPacienteInternalFrame;
+    ConsPacienteInternalFrame consPacienteInternalFrame;
+
     public PrincipalJFrame() {
+        regPacienteInternalFrame = new RegPacienteInternalFrame();
+        consPacienteInternalFrame = new ConsPacienteInternalFrame();
+        add(regPacienteInternalFrame);
+        add(consPacienteInternalFrame);
         initComponents();
+        setExtendedState(MAXIMIZED_BOTH);
     }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,6 +46,11 @@ public class PrincipalJFrame extends javax.swing.JFrame {
         jMenu1.setText("Archivo");
 
         jMenuItem1.setText("Salir");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
@@ -84,11 +94,19 @@ public class PrincipalJFrame extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
+        consPacienteInternalFrame.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
+        regPacienteInternalFrame.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+       System.exit(0);
+
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,6 +132,8 @@ public class PrincipalJFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new PrincipalJFrame().setVisible(true));
     }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -122,4 +142,3 @@ public class PrincipalJFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     // End of variables declaration//GEN-END:variables
-}
