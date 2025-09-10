@@ -19,7 +19,7 @@ public class PacienteControl implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         // Botón guardar
-        if (e.getSource() == pacienteVista.RegistrarBtn) {
+        if (e.getSource() == pacienteVista.btn_registrar) {
             String identificacion = pacienteVista.txt_identificacion.getText();
             String nombres = pacienteVista.txt_nombres.getText();
             String apellidos = pacienteVista.txt_apellidos.getText();
@@ -42,7 +42,7 @@ public class PacienteControl implements ActionListener {
         }
 
         // Botón limpiar
-        if (e.getSource() == pacienteVista.NuevoBtn) {
+        if (e.getSource() == pacienteVista.btn_nuevo) {
             limpiarFormulario();
         }
     }

@@ -3,21 +3,35 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package Vista;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Andres Valencia
  */
 public class ConsPacienteInternalFrame extends javax.swing.JInternalFrame {
-
-    public Object btn_buscar;
-    public Object lbl_info;
+    
+    public Controlador.GestorPacienteControl gestorPacienteControl;
+    private DefaultTableModel tabla;
+  /*  public Object btn_buscar;
+    public Object lbl_info; */
 
     /**
      * Creates new form ConsPacienteInternalFrame
      */
     public ConsPacienteInternalFrame() {
         initComponents();
+        gestorPacienteControl=new Controlador.GestorPacienteControl(this);
+        String[] titulosTabla = {"Identificacion", "Nombres", "Apellidos", "Fecha Nacimiento", "Genero"};
+        tabla=new DefaultTableModel(null, titulosTabla);
+        Tbl_datos.setModel(tabla);
+        btn_aceptar.addActionListener(gestorPacienteControl);
+        
+    }
+    
+    public DefaultTableModel getTableModel(){
+    
+         return tabla;
     }
 
     /**

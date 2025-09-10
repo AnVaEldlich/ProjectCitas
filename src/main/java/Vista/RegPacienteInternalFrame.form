@@ -44,9 +44,9 @@
                               <Component id="rdb_femenino" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="RegistrarBtn" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_registrar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="34" max="32767" attributes="0"/>
-                              <Component id="NuevoBtn" min="-2" pref="91" max="-2" attributes="0"/>
+                              <Component id="btn_nuevo" min="-2" pref="91" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -118,8 +118,8 @@
               </Group>
               <EmptySpace pref="50" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="RegistrarBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="NuevoBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_registrar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_nuevo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
           </Group>
@@ -176,7 +176,7 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="RegistrarBtn">
+    <Component class="javax.swing.JButton" name="btn_registrar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Registrar"/>
       </Properties>
@@ -184,7 +184,7 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="NuevoBtn">
+    <Component class="javax.swing.JButton" name="btn_nuevo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nuevo"/>
       </Properties>

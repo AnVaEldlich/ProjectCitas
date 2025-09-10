@@ -16,11 +16,14 @@ public class RegPacienteInternalFrame extends javax.swing.JInternalFrame {
      * Creates new form RegpacienteInternalFrame
      */
     
+    private Controlador.PacienteControl pacienteControlador;
     
     public RegPacienteInternalFrame() {
         initComponents();
-        
-        this.setTitle("Registro de Pacientes");
+        pacienteControlador=new Controlador.PacienteControl(this);
+        btn_registrar.addActionListener(pacienteControlador);
+        btn_nuevo.addActionListener(pacienteControlador);
+    /*    this.setTitle("Registro de Pacientes"); */
     }
 
     /**
@@ -45,8 +48,8 @@ public class RegPacienteInternalFrame extends javax.swing.JInternalFrame {
         txt_identificacion = new javax.swing.JTextField();
         txt_nombres = new javax.swing.JTextField();
         txt_apellidos = new javax.swing.JTextField();
-        RegistrarBtn = new javax.swing.JButton();
-        NuevoBtn = new javax.swing.JButton();
+        btn_registrar = new javax.swing.JButton();
+        btn_nuevo = new javax.swing.JButton();
         rdb_masculino = new javax.swing.JRadioButton();
         rdb_femenino = new javax.swing.JRadioButton();
         Dtd_fecha_nacimiento = new com.toedter.calendar.JDateChooser();
@@ -74,9 +77,9 @@ public class RegPacienteInternalFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        RegistrarBtn.setText("Registrar");
+        btn_registrar.setText("Registrar");
 
-        NuevoBtn.setText("Nuevo");
+        btn_nuevo.setText("Nuevo");
 
         rdb_masculino.setText("Masculino");
 
@@ -103,9 +106,9 @@ public class RegPacienteInternalFrame extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(rdb_femenino))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(RegistrarBtn)
+                                .addComponent(btn_registrar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                                .addComponent(NuevoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btn_nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -157,8 +160,8 @@ public class RegPacienteInternalFrame extends javax.swing.JInternalFrame {
                     .addComponent(rdb_femenino))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RegistrarBtn)
-                    .addComponent(NuevoBtn))
+                    .addComponent(btn_registrar)
+                    .addComponent(btn_nuevo))
                 .addGap(46, 46, 46))
         );
 
@@ -181,8 +184,8 @@ public class RegPacienteInternalFrame extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public com.toedter.calendar.JDateChooser Dtd_fecha_nacimiento;
-    public javax.swing.JButton NuevoBtn;
-    public javax.swing.JButton RegistrarBtn;
+    public javax.swing.JButton btn_nuevo;
+    public javax.swing.JButton btn_registrar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
