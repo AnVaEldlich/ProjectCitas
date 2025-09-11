@@ -1,15 +1,27 @@
 package Modelo;
 
+import Modelo.Paciente;
+import java.util.*;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
+import Recursos.Conexion;   // ✅ ya importas la clase Conexion
 
-public class GestorPaciente {
-    private final List<Paciente> pacientes;
+        public class GestorPaciente {
+            private static LinkedList<Paciente> pacientes;
+            private static Connection conn;
 
-    public GestorPaciente() {
-        this.pacientes = new LinkedList<>();
-    }
+            public GestorPaciente() {
+                Conexion conexion = new Conexion("localhost", "XE", "SYSTEM", "123"); // ✅ sin "Recursos."
+                conn = conexion.getConexion();
+                this.pacientes = new LinkedList<>();
+            }
+        }
+
 
     // Fixed method name to match the one being called
     public void RegistrarPacientes(Paciente paciente) {

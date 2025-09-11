@@ -78,6 +78,11 @@ public class RegPacienteInternalFrame extends javax.swing.JInternalFrame {
         });
 
         btn_registrar.setText("Registrar");
+        btn_registrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_registrarActionPerformed(evt);
+            }
+        });
 
         btn_nuevo.setText("Nuevo");
 
@@ -180,6 +185,11 @@ public class RegPacienteInternalFrame extends javax.swing.JInternalFrame {
     private void rdb_femeninoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdb_femeninoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rdb_femeninoActionPerformed
+
+    private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btn_registrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
