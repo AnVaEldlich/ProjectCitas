@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package Vista;
+import Controlador.GestorPacienteControl;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,9 +26,22 @@ public class ConsPacienteInternalFrame extends javax.swing.JInternalFrame {
         String[] titulosTabla = {"Identificacion", "Nombres", "Apellidos", "Fecha Nacimiento", "Genero"};
         tabla=new DefaultTableModel(null, titulosTabla);
         Tbl_datos.setModel(tabla);
+        
+                // Group radio buttons properly
+        buttonGroup1.add(rdb_identificacion);
+        buttonGroup1.add(rdb_nombres);
+        buttonGroup1.add(rdb_apellidos);
+        buttonGroup1.add(rdb_genero);
+        
+        // Set default selection
+        rdb_identificacion.setSelected(true);
+        
+        // Add listener only once
         btn_aceptar.addActionListener(gestorPacienteControl);
         
     }
+    
+    
     
     public DefaultTableModel getTableModel(){
     
@@ -159,6 +173,8 @@ public class ConsPacienteInternalFrame extends javax.swing.JInternalFrame {
 
     private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
         // TODO add your handling code here:
+       btn_aceptar.addActionListener(new GestorPacienteControl(this));
+
     }//GEN-LAST:event_btn_aceptarActionPerformed
 
     private void ValorTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValorTxtActionPerformed

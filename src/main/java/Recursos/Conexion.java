@@ -1,15 +1,18 @@
 package Recursos;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
+
+
 public class Conexion {
     private static final String URL = "jdbc:mysql://localhost:3306/sistema_medico";
     private static final String USUARIO = "root";
-    private static final String CONTRASEÑA = ""; // Por defecto en XAMPP no hay contraseña
+    private static final String CONTRASEÑA = ""; 
 
     public static Connection getConnection() {
         try {
@@ -22,7 +25,10 @@ public class Conexion {
         }
     }
 
-    // Método para probar la conexión
+    public Connection getConexion() {
+        return getConnection();
+    }
+
     public static void probarConexion() {
         try (Connection conn = getConnection()) {
             if (conn != null) {
@@ -37,34 +43,27 @@ public class Conexion {
         }
     }
 
-    // Método para insertar un registro de prueba en la tabla "paciente"
-        public static void probarInsert() {
-            String sql = "INSERT INTO pacientes (PacIdentificacion, PacNombre, PacApellidos, PacFechaNacimiento, PacSexo) " +
-                         "VALUES (?, ?, ?, ?, ?)";
-            try (Connection conn = getConnection();
-                 PreparedStatement ps = conn.prepareStatement(sql)) {
+    public static void probarInsert() {
+        String sql = "INSERT INTO pacientes (PacIdentificacion, PacNombre, PacApellidos, PacFechaNacimiento, PacSexo) " +
+                     "VALUES (?, ?, ?, ?, ?)";
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
 
-                ps.setString(1, "123456789");         // Identificación
-                ps.setString(2, "Juan");             // Nombre
-                ps.setString(3, "Pérez");            // Apellidos
-                ps.setDate(4, java.sql.Date.valueOf("1990-05-15")); // Fecha de nacimiento
-                ps.setString(5, "M");                // Sexo (M/F)
+            ps.setString(1, "123456789");
+            ps.setString(2, "Juan");
+            ps.setString(3, "Pérez");
+            ps.setDate(4, java.sql.Date.valueOf("1990-05-15"));
+            ps.setString(5, "M");
 
-                int rows = ps.executeUpdate();
+            int rows = ps.executeUpdate();
 
-                if (rows > 0) {
-                    System.out.println("✅ Se insertó un paciente de prueba.");
-                    JOptionPane.showMessageDialog(null, "✅ Se insertó un paciente de prueba en la tabla.");
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "❌ Error al insertar: " + e.getMessage());
+            if (rows > 0) {
+                System.out.println("✅ Se insertó un paciente de prueba.");
+                JOptionPane.showMessageDialog(null, "✅ Se insertó un paciente de prueba en la tabla.");
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "❌ Error al insertar: " + e.getMessage());
         }
-
-    public Connection getConexion() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-    }
-
+}
