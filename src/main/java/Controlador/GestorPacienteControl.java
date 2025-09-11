@@ -32,18 +32,16 @@ import javax.swing.JOptionPane;
      */
     private void buscarPacientes() {
         
-        String valor = consultarPacienteVista.txt_valor.getText().trim();
+        String valor = consultarPacienteVista.txt_valor_field.getText().trim();
         
         // Si no hay valor, mostrar todos los pacientes
         if (valor.isEmpty()) {
             mostrarTodosPacientes();
             return;
         }
-        /*
-        List<Modelo.Paciente> pacientes = 
-                pacientesModelo.buscarPacientesPorParametro(parametro, valor)
-        */
+        
         Modelo.GestorPaciente.Parametro parametro = obtenerParametroSeleccionado();
+        
         
         if (parametro == null) {
             JOptionPane.showMessageDialog(consultarPacienteVista, 
@@ -130,7 +128,7 @@ import javax.swing.JOptionPane;
      * Método público para limpiar la búsqueda y mostrar todos
      */
     public void limpiarBusqueda() {
-        consultarPacienteVista.txt_valor.setText("");
+        consultarPacienteVista.txt_valor_field.setText("");
         mostrarTodosPacientes();
     }
 }

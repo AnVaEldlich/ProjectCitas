@@ -20,6 +20,14 @@ public class RegPacienteInternalFrame extends javax.swing.JInternalFrame {
     
     public RegPacienteInternalFrame() {
         initComponents();
+        
+                // Group gender radio buttons properly
+        buttonGroup1.add(rdb_masculino);
+        buttonGroup1.add(rdb_femenino);
+        
+        // Set default selection
+        rdb_masculino.setSelected(true);
+        
         pacienteControlador=new Controlador.PacienteControl(this);
         btn_registrar.addActionListener(pacienteControlador);
         btn_nuevo.addActionListener(pacienteControlador);

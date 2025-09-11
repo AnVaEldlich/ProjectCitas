@@ -63,7 +63,7 @@ public class ConsPacienteInternalFrame extends javax.swing.JInternalFrame {
         rdb_apellidos = new javax.swing.JRadioButton();
         rdb_genero = new javax.swing.JRadioButton();
         txt_valor = new javax.swing.JLabel();
-        ValorTxt = new javax.swing.JTextField();
+        txt_valor_field = new javax.swing.JTextField();
         btn_aceptar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tbl_datos = new javax.swing.JTable();
@@ -88,9 +88,9 @@ public class ConsPacienteInternalFrame extends javax.swing.JInternalFrame {
 
         txt_valor.setText("Valor a buscar:");
 
-        ValorTxt.addActionListener(new java.awt.event.ActionListener() {
+        txt_valor_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ValorTxtActionPerformed(evt);
+                txt_valor_fieldActionPerformed(evt);
             }
         });
 
@@ -136,7 +136,7 @@ public class ConsPacienteInternalFrame extends javax.swing.JInternalFrame {
                                 .addComponent(rdb_genero))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
-                                .addComponent(ValorTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_valor_field, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btn_aceptar)))))
                 .addContainerGap(17, Short.MAX_VALUE))
@@ -153,7 +153,7 @@ public class ConsPacienteInternalFrame extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_valor, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ValorTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_valor_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_aceptar))
                 .addGap(51, 51, 51)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,18 +173,18 @@ public class ConsPacienteInternalFrame extends javax.swing.JInternalFrame {
 
     private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
         // TODO add your handling code here:
-       btn_aceptar.addActionListener(new GestorPacienteControl(this));
+      /* btn_aceptar.addActionListener(new GestorPacienteControl(this)); */
 
     }//GEN-LAST:event_btn_aceptarActionPerformed
 
-    private void ValorTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValorTxtActionPerformed
+    private void txt_valor_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_valor_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ValorTxtActionPerformed
+    }//GEN-LAST:event_txt_valor_fieldActionPerformed
 
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTable Tbl_datos;
-    private javax.swing.JTextField ValorTxt;
     public javax.swing.JButton btn_aceptar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -193,6 +193,7 @@ public class ConsPacienteInternalFrame extends javax.swing.JInternalFrame {
     public javax.swing.JRadioButton rdb_identificacion;
     public javax.swing.JRadioButton rdb_nombres;
     public javax.swing.JLabel txt_valor;
+    public javax.swing.JTextField txt_valor_field;
     // End of variables declaration//GEN-END:variables
 
     public class lbl_info {
